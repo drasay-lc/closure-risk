@@ -1,0 +1,13 @@
+outcome,model,description,auc,auc_np4,eval_obs,eval_closures,train_obs,train_closures
+closed_t,A,"LPM, continuous, non-missing sample",0.7487150837988827,0.7418915343915343,3247,25,55166,1396
+closed_t,B,"LASSO-selected LPM, continuous",0.7864105571166485,0.7848649863862314,5134,68,55166,1396
+closed_t,C,"LPM, binned variables, full sample",0.7874506581248879,0.7973324138790839,18227,442,55166,1396
+closed_t,D,"XGBoost, binned variables, full sample",0.7958353740060069,0.8445148320437598,18227,442,55166,1396
+closed_t,E,"XGBoost, continuous variables, full sample",0.8226985346592087,0.8649454171439258,18227,442,55166,1396
+closed_t,F,"XGBoost, all controls (lags 2-5), full sample",0.8290881405220984,0.8676589759773097,18227,442,55166,1396
+closed_3yr,A,"LPM, continuous, non-missing sample",0.8188043067623725,0.8154073725645532,2711,64,49912,3803
+closed_3yr,B,"LASSO-selected LPM, continuous",0.8188043067623725,0.8154073725645532,2711,64,49912,3803
+closed_3yr,C,"LPM, binned variables, full sample",0.7793308356631087,0.7645163254742354,16781,1190,49912,3803
+closed_3yr,D,"XGBoost, binned variables, full sample",0.7969358534254571,0.8437611010179951,16781,1190,49912,3803
+closed_3yr,E,"XGBoost, continuous variables, full sample",0.815340136439413,0.8525514156863939,16781,1190,49912,3803
+closed_3yr,F,"XGBoost, all controls (lags 2-5), full sample",0.818533882669866,0.8478801073140696,16781,1190,49912,3803
