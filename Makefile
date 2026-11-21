@@ -1,6 +1,6 @@
 PY ?= python3 -W ignore
 
-all: data features evaluate score scenarios
+all: data features evaluate score scenarios dashboard
 
 data:
 	./scripts/fetch_ipeds.sh
@@ -18,4 +18,7 @@ score:
 scenarios:
 	cd src && $(PY) scenarios.py
 
-.PHONY: all data features evaluate score scenarios
+dashboard:
+	cd src && $(PY) export_dashboard.py
+
+.PHONY: all data features evaluate score scenarios dashboard

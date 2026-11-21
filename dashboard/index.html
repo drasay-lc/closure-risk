@@ -1,0 +1,162 @@
+<meta name="dash-one-writer">
+<style>
+.cr { font-family: var(--font-anthropic-sans); color: var(--color-fg); max-width: 980px; }
+.cr h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0 0 var(--cds-gap-sm); }
+.cr h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: var(--cds-gap-xl) 0 var(--cds-gap-xs); }
+.cr p { margin: 0 0 var(--cds-gap-sm); line-height: 1.5; }
+.cr .cr-lede { font-size: var(--cds-font-size-body); }
+.cr .cr-muted { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.cr .cr-num { font-variant-numeric: tabular-nums; font-weight: var(--cds-font-weight-medium); }
+.cr .cr-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: var(--cds-gap-md); margin: var(--cds-gap-md) 0; }
+.cr .cr-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); }
+.cr .cr-tile .cr-big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: 2rem; font-variant-numeric: tabular-nums; display: block; margin: var(--cds-gap-xs) 0; }
+.cr .cr-chart { position: relative; width: 100%; min-height: 220px; }
+.cr .cr-chart svg { display: block; overflow: visible; }
+.cr .cr-chart text { fill: var(--cds-text-secondary); font-size: var(--cds-font-size-caption); font-family: var(--font-anthropic-sans); }
+.cr .cr-chart .cr-strong { fill: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+.cr .cr-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); box-shadow: var(--cds-shadow-popover); border-radius: var(--cds-radius); padding: var(--cds-pad-sm) var(--cds-pad-md); font-size: var(--cds-font-size-caption); color: var(--color-fg); white-space: nowrap; z-index: 2; }
+.cr .cr-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: var(--cds-gap-xs) 0 var(--cds-gap-sm); }
+.cr .cr-sw { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+.cr .cr-sw.cr-lineSw { height: 3px; width: 16px; border-radius: 2px; vertical-align: 3px; }
+.cr .cr-wrap { overflow-x: auto; margin: var(--cds-gap-sm) 0; }
+.cr table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.cr th, .cr td { padding: 6px 8px; border-bottom: 1px solid var(--color-border-line); text-align: right; }
+.cr th { font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); vertical-align: bottom; }
+.cr th:first-child, .cr td:first-child, .cr .cr-left { text-align: left; }
+.cr tr.cr-lc td { font-weight: var(--cds-font-weight-medium); background: var(--color-panel); }
+.cr details { margin-top: var(--cds-gap-xl); border-top: 1px solid var(--color-border-line); padding-top: var(--cds-gap-md); }
+.cr summary { cursor: pointer; font-weight: var(--cds-font-weight-medium); }
+.cr details li { margin-bottom: var(--cds-gap-xs); line-height: 1.5; }
+.cr a { color: inherit; }
+</style>
+
+<div class="cr">
+  <h1 id="title">Closure and distress risk: Lewis &amp; Clark and its peers</h1>
+  <p class="cr-lede" id="takeaway">With data through fall 2023 and FY2023, the model puts Lewis &amp; Clark's chance of closing by 2027 at <span class="cr-num" data-draw="lc_risk" data-source="current_risk" data-field="risk_3yr_pct" data-where="college=Lewis %26 Clark">—</span>%. That is at percentile <span class="cr-num" data-draw="lc_pct" data-source="current_risk" data-field="percentile" data-where="college=Lewis %26 Clark">—</span> of <span class="cr-num" data-draw="np4_n" data-source="benchmarks" data-field="value" data-where="key=np4_count">—</span> private nonprofit four-year colleges, where 100 is the riskiest. The median college scores <span class="cr-num" data-draw="np4_med" data-source="benchmarks" data-field="value" data-where="key=np4_median_3yr">—</span>%, and <span class="cr-num" data-draw="peers_below" data-source="peers_below_median">—</span> of the 34 colleges in the comparison set score below it.</p>
+  <p class="cr-muted">The method replicates Kelchen, Ritter &amp; Webber (2024), "Predicting College Closures and Financial Distress," Philadelphia Fed Working Paper 24-20, on IPEDS data from 2002 to 2023. The scores come from the paper's best model, gradient-boosted trees using all controls. They are screening scores, not forecasts.</p>
+
+  <div class="cr-tiles" id="tiles">
+    <div class="cr-tile" id="tile-risk"><span class="cr-muted">L&amp;C chance of closing by 2027</span><span class="cr-big" data-draw="tile_risk" data-source="current_risk" data-field="risk_3yr_pct" data-where="college=Lewis %26 Clark">—</span><span class="cr-muted">The national median is <span data-draw="tile_med" data-source="benchmarks" data-field="value" data-where="key=np4_median_3yr">—</span>%</span></div>
+    <div class="cr-tile" id="tile-pct"><span class="cr-muted">L&amp;C percentile (100 = riskiest)</span><span class="cr-big" data-draw="tile_pct" data-source="current_risk" data-field="percentile" data-where="college=Lewis %26 Clark">—</span><span class="cr-muted">Among private nonprofit four-year colleges</span></div>
+    <div class="cr-tile" id="tile-cliff"><span class="cr-muted">L&amp;C by 2031 if enrollment falls 15% and half of costs are fixed</span><span class="cr-big" data-draw="tile_cliff" data-source="scenarios_2031" data-field="cliff_gradual_fixed50" data-where="college=Lewis %26 Clark">—</span><span class="cr-muted">It is <span data-draw="tile_base" data-source="scenarios_2031" data-field="baseline" data-where="college=Lewis %26 Clark">—</span>% if enrollment stays flat</span></div>
+  </div>
+
+  <section id="current">
+    <h2>Current closure scores across the comparison set</h2>
+    <p class="cr-muted">This is the chance of closing between 2025 and 2027, from the model trained on 2004 to 2021 outcomes. The dashed line is the median private nonprofit four-year college. Point at a bar to see its group and percentile.</p>
+    <div class="cr-chart" id="chart-current" data-draw="bars" data-source="current_risk benchmarks" style="min-height: 720px"></div>
+  </section>
+
+  <section id="history">
+    <h2>L&amp;C's percentile over time, against the three peer groups</h2>
+    <p class="cr-muted">This is the percentile of the three-year closure score among private nonprofit four-year colleges in each year. Each college's score comes from a model that never saw that college (5-fold cross-fitting). Group lines are medians.</p>
+    <div class="cr-legend" id="legend-history">
+      <span><span class="cr-sw cr-lineSw" data-sw="0"></span>Lewis &amp; Clark</span>
+      <span><span class="cr-sw cr-lineSw" data-sw="1"></span>Group 1 median (L&amp;C comparison group)</span>
+      <span><span class="cr-sw cr-lineSw" data-sw="2"></span>Group 2 median (Carnegie class)</span>
+      <span><span class="cr-sw cr-lineSw" data-sw="3"></span>Group 3 median (smaller endowment)</span>
+    </div>
+    <div class="cr-chart" id="chart-history" data-draw="lines" data-source="risk_history" style="min-height: 280px"></div>
+  </section>
+
+  <section id="distress">
+    <h2>Odds of each distress flag in FY2025</h2>
+    <p>These are the paper's four warning signs, each predicted from data two to five years earlier. For Lewis &amp; Clark the odds that enrollment sits 10% below its five-year high are <span class="cr-num" data-draw="lc_enr10" data-source="distress_outlook" data-field="enrollment_down_10_pct" data-where="college=Lewis %26 Clark">—</span>%, and the odds of a revenue drop of that size are <span class="cr-num" data-draw="lc_rev10" data-source="distress_outlook" data-field="revenue_down_10_pct" data-where="college=Lewis %26 Clark">—</span>%.</p>
+    <p class="cr-muted">The revenue flag counts investment returns, so for colleges with large endowments it partly tracks the markets: FY2021's gains set a high bar.</p>
+    <div class="cr-wrap">
+      <table id="table-distress" data-source="distress_outlook" data-row-key="college">
+        <thead><tr>
+          <th data-field="college">College</th><th data-field="group">Group</th>
+          <th data-field="revenue_down_10_pct">Revenue 10% below 5-yr high</th>
+          <th data-field="neg_margin_3_of_5_pct">Negative margin in 3 of 5 years</th>
+          <th data-field="enrollment_down_10_pct">Enrollment 10% below 5-yr high</th>
+          <th data-field="enrollment_slide_3yr_pct">Enrollment down 5%+ three years running</th>
+        </tr></thead>
+        <tbody data-draw="distress_rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="cliff">
+    <h2>How an enrollment cliff changes the scores</h2>
+    <p>These are the paper's enrollment scenarios, run from each college's 2023 position, with the three-year closure score shown for 2031. With costs scaling, a 15% gradual decline moves Lewis &amp; Clark from <span class="cr-num" data-draw="cl_base" data-source="scenarios_2031" data-field="baseline" data-where="college=Lewis %26 Clark">—</span>% to <span class="cr-num" data-draw="cl_grad" data-source="scenarios_2031" data-field="cliff_gradual" data-where="college=Lewis %26 Clark">—</span>%. If half of costs are fixed, it moves to <span class="cr-num" data-draw="cl_fix" data-source="scenarios_2031" data-field="cliff_gradual_fixed50" data-where="college=Lewis %26 Clark">—</span>%. The fixed-cost case is not in the paper. For context, L&amp;C's FY2023 margin was <span class="cr-num" data-draw="lc_margin" data-source="metrics_2023" data-field="fy2023_margin_pct" data-where="college=Lewis %26 Clark">—</span>% and tuition is <span class="cr-num" data-draw="lc_tuit" data-source="metrics_2023" data-field="tuition_share_pct" data-where="college=Lewis %26 Clark">—</span>% of revenue.</p>
+    <div class="cr-legend" id="legend-cliff">
+      <span><span class="cr-sw" data-sw="muted"></span>Flat enrollment</span>
+      <span><span class="cr-sw" data-sw="1"></span>15% gradual decline by 2029</span>
+      <span><span class="cr-sw" data-sw="0"></span>The same decline with half of costs fixed</span>
+    </div>
+    <div class="cr-chart" id="chart-cliff" data-draw="dumbbell" data-source="scenarios_2031 scenario_medians_2031" style="min-height: 720px"></div>
+    <p class="cr-muted">Across all private colleges, the paper's LASSO model expects about <span class="cr-num" data-draw="sys_base" data-source="system_closures_2027_2031" data-field="closures_per_year_lasso" data-where="scenario=baseline">—</span> closures a year from 2027 to 2031 with flat enrollment. That rises to <span class="cr-num" data-draw="sys_grad" data-source="system_closures_2027_2031" data-field="closures_per_year_lasso" data-where="scenario=cliff_gradual">—</span> with a gradual 15% decline, <span class="cr-num" data-draw="sys_fix" data-source="system_closures_2027_2031" data-field="closures_per_year_lasso" data-where="scenario=cliff_gradual_fixed50">—</span> if half of costs are fixed, and <span class="cr-num" data-draw="sys_per" data-source="system_closures_2027_2031" data-field="closures_per_year_lasso" data-where="scenario=persist">—</span> if each college's 2019-23 decline persists. The dashed line marks the median private nonprofit four-year college in the fixed-cost scenario, <span class="cr-num" data-draw="np4_fix" data-source="scenario_medians_2031" data-field="np4_median_pct" data-where="scenario=cliff_gradual_fixed50">—</span>%.</p>
+  </section>
+
+  <section id="metrics">
+    <h2>The 2023 numbers behind the scores</h2>
+    <p class="cr-muted">These come from IPEDS: fall 2023 enrollment and FY2023 finance. The margin uses total revenue including investment return. Days cash is a proxy: unrestricted net assets divided by daily cash expenses, because IPEDS has no cash line. The table is sorted by margin.</p>
+    <div class="cr-wrap">
+      <table id="table-metrics" data-source="metrics_2023" data-row-key="college">
+        <thead><tr>
+          <th data-field="college">College</th><th data-field="group">Group</th>
+          <th data-field="fall_2023_enrollment">Enrollment</th><th data-field="fy2023_margin_pct">Margin %</th>
+          <th data-field="tuition_share_pct">Tuition % of revenue</th><th data-field="days_cash_proxy">Days cash (proxy)</th>
+          <th data-field="endowment_m">Endowment $M</th><th data-field="plant_debt_m">Plant debt $M</th>
+        </tr></thead>
+        <tbody data-draw="metric_rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>Does the model work?</h2>
+    <p class="cr-muted">This is the AUC on institutions held out of training (50 = coin flip, 100 = perfect), next to the paper's published figures. The models are A, linear probability; B, LASSO-selected; C, binned linear; D to F, gradient-boosted trees.</p>
+    <div class="cr-wrap">
+      <table id="table-auc" data-source="model_check" data-row-key="model">
+        <thead><tr>
+          <th data-field="model">Model</th><th data-field="description" class="cr-left">Specification</th>
+          <th data-field="auc_this_year">Closed this year</th><th data-field="paper_auc_this_year">Paper</th>
+          <th data-field="auc_this_year_np4">Nonprofit 4-yr only</th>
+          <th data-field="auc_three_year">Closed within 3 years</th><th data-field="paper_auc_three_year">Paper</th>
+        </tr></thead>
+        <tbody data-draw="auc_rows"></tbody>
+      </table>
+    </div>
+    <p>The closure data end in 2023. The model's 2025 scores were then checked against colleges that closed afterward. <span class="cr-num" data-draw="oos_hits" data-source="oos_hits">—</span> of these <span class="cr-num" data-draw="oos_n" data-source="oos_n">—</span> later closures ranked in the riskiest tenth of private nonprofit four-year colleges.</p>
+    <div class="cr-wrap">
+      <table id="table-oos" data-source="later_closures_check" data-row-key="institution">
+        <thead><tr>
+          <th data-field="institution">Institution</th><th data-field="event" class="cr-left">What happened</th>
+          <th data-field="rank">Risk rank</th><th data-field="of">Out of</th><th data-field="risk_3yr_pct">3-year score %</th><th data-field="top_decile">Riskiest tenth?</th>
+        </tr></thead>
+        <tbody data-draw="oos_rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <details id="notes">
+    <summary>Method, differences from the paper, and source code</summary>
+    <ul>
+      <li><b>Data.</b> The data are IPEDS complete files for the 2002 to 2023 collections: directory, fall enrollment, staff, and FASB and for-profit finance. Units are 6-digit OPEIDs, covering private Title IV colleges. Dollars are in FY2023 terms, skewed levels are logged, and values are winsorized at 2.5%.</li>
+      <li><b>Features.</b> These follow the paper:
+        <ul>
+          <li>enrollment, staff, revenue and expense levels, changes and shares</li>
+          <li>unrestricted net assets, plant debt, endowment</li>
+          <li>operating margin, days cash, EBIDA, debt/EBIDA, debt/assets</li>
+          <li>four distress flags</li>
+        </ul>
+        They enter at 2- to 5-year lags.</li>
+      <li><b>Closures.</b> These are dated from IPEDS directory records, not FSA's PEPS file, which could not be reached. There are about 1,840 private closures from 2004 to 2023, against the paper's 1,671 from 1996 to 2023, and both peak in 2016-18.</li>
+      <li><b>Not included.</b> Federal heightened cash monitoring and financial responsibility scores, and county economic controls, are left out because their sources were unreachable. The paper finds county controls add little.</li>
+      <li><b>Validation.</b> The train/test split is by institution, which is stricter than splitting by observation.</li>
+      <li><b>Scenarios.</b> These start from 2023, not the paper's 2019. Revenue, expenses and staff scale with enrollment, and the fixed-cost variant is an addition to the paper.</li>
+      <li><b>Peer groups</b> match the budget analysis site:
+        <ul>
+          <li>Group 1, L&amp;C's comparison group</li>
+          <li>Group 2, its Carnegie class</li>
+          <li>Group 3, colleges with smaller endowments</li>
+        </ul></li>
+      <li><b>Code and full outputs:</b> <a href="https://github.com/drasay-lc/closure-risk">github.com/drasay-lc/closure-risk</a> (private repository). The paper: <a href="https://www.philadelphiafed.org/-/media/FRBP/Assets/working-papers/2024/wp24-20.pdf">Philadelphia Fed WP 24-20</a>.</li>
+    </ul>
+  </details>
+</div>
+
+<script src="app.js"></script>
+<script src="charts.js"></script>

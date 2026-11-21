@@ -39,6 +39,8 @@ This repo replicates the method in **Kelchen, Ritter & Webber (2024), "Predictin
 
    Revenue and expenses scale with enrollment. An extra scenario, not in the paper, keeps half of expenses fixed.
 
+6. **Dashboard data** (`src/export_dashboard.py`). Writes the small CSVs in `dashboard/data/` that feed the results dashboard. The dashboard's page lives in `dashboard/index.html`, `app.js` and `charts.js`, and the out-of-sample check reads `config/later_closures.csv`.
+
 ```bash
 pip install -r requirements.txt
 make all          # about 5 minutes on 2 cores; outputs land in output/

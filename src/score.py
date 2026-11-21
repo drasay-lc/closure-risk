@@ -67,6 +67,10 @@ def main() -> None:
     np4 = cur[(cur.forprofit == 0) & (cur.four_year == 1)]
     bench = {c: np4[c].median() for c in keep if c.startswith("p_")}
     sc.to_csv(OUT / "peer_scores_current.csv", index=False)
+    allc = cur[(cur.forprofit == 0) & (cur.four_year == 1)][["opeid6", "UNITID", "INSTNM", "STABBR", "p_closed_3yr_F"]]
+    allc = allc.sort_values("p_closed_3yr_F", ascending=False)
+    allc["rank"] = range(1, len(allc) + 1)
+    allc.to_csv(OUT / "np4_scores_current.csv", index=False)
     pd.Series(bench, name="median_private_nonprofit_4yr").to_csv(OUT / "benchmark_medians.csv")
     print(sc[["short", "peer_group", "p_closed_3yr_F", "pct_closed_3yr_F", "p_closed_t_F", "p_closed_3yr_B"]]
           .sort_values("p_closed_3yr_F", ascending=False).to_string())
