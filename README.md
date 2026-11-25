@@ -44,7 +44,7 @@ This repo replicates the method in **Kelchen, Ritter & Webber (2024), "Predictin
 7. **Track record** (`src/closure_backtest.py`, `make backtest`). Asks whether the model would have flagged real closures in advance, using cross-fitted model F scores (no college is scored by a model that saw it). A closure in year *C* counts as flagged if the college was in the riskiest tenth of private nonprofit four-year colleges in any score for *C*-2 to *C*.
    * **Oregon**: every Oregon nonprofit closure since 2006 (`config/oregon_closures.csv`, with sources).
    * **U.S. peer closures, 2016 to 2027**: IPEDS-recorded closures plus a sourced list of later closures and absorptions (`config/closure_events.csv`), screened for resemblance to the comparison set on Carnegie basic class, undergraduate program mix and profile, residential setting, and size (expenses and endowment at least half the smallest in the comparison set, median of the last five fiscal years before closing).
-   * Writes `output/backtest_*.csv` and the two-part page in `pages/track-record/` (with `pages/index.html` as a section hub). `make site SITE=../budgetanalysis` copies them into the budget analysis site under `closure-risk/`.
+   * Writes `output/backtest_*.csv` and the two-part page in `pages/track-record/` (with `pages/index.html` as a section hub). `make site SITE=../budgetanalysis` copies them into the budget analysis site under `closure-risk/`. Published at https://drasay-lc.github.io/budgetanalysis/closure-risk/ (hub, `lewis-clark-and-peers/`, `track-record/`).
 
 ```bash
 pip install -r requirements.txt
