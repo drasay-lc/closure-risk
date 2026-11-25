@@ -41,6 +41,11 @@ This repo replicates the method in **Kelchen, Ritter & Webber (2024), "Predictin
 
 6. **Dashboard data** (`src/export_dashboard.py`). Writes the small CSVs in `dashboard/data/` that feed the results dashboard. The dashboard's page lives in `dashboard/index.html`, `app.js` and `charts.js`, and the out-of-sample check reads `config/later_closures.csv`.
 
+7. **Track record** (`src/closure_backtest.py`, `make backtest`). Asks whether the model would have flagged real closures in advance, using cross-fitted model F scores (no college is scored by a model that saw it). A closure in year *C* counts as flagged if the college was in the riskiest tenth of private nonprofit four-year colleges in any score for *C*-2 to *C*.
+   * **Oregon**: every Oregon nonprofit closure since 2006 (`config/oregon_closures.csv`, with sources).
+   * **U.S. peer closures, 2016 to 2027**: IPEDS-recorded closures plus a sourced list of later closures and absorptions (`config/closure_events.csv`), screened for resemblance to the comparison set on Carnegie basic class, undergraduate program mix and profile, residential setting, and size (expenses and endowment at least half the smallest in the comparison set, median of the last five fiscal years before closing).
+   * Writes `output/backtest_*.csv` and the two-part page in `pages/track-record/` (with `pages/index.html` as a section hub). `make site SITE=../budgetanalysis` copies them into the budget analysis site under `closure-risk/`.
+
 ```bash
 pip install -r requirements.txt
 make all          # about 5 minutes on 2 cores; outputs land in output/
@@ -103,6 +108,12 @@ Wells (567th) and Limestone (795th) were missed.
     * its FY2023 margin was already slightly negative (-2.9%)
     * tuition is 68% of revenue, tied for the 3rd-highest share in the set
     * it carries $153M of plant debt
+
+## Track record
+
+* **Oregon**: 5 of the 6 testable closures were in the riskiest tenth before closing (OCAC, Concordia, Birthingway, OCOM, Multnomah). Marylhurst peaked at the 87th percentile. Cascade College (reported under Oklahoma Christian) and Oregon College of Ministry are not in the panel.
+* **U.S., 2016 to 2027**: 177 private nonprofit four-year closures and absorptions. The model flagged 86 of 131 scored colleges outside the peer screen and 9 of 29 near peers, but none of the 7 peer-sized ones (Wheelock, Mills, Holy Names, Birmingham-Southern, Cabrini, Saint Rose, Hampshire), which peaked between the 19th and 84th percentiles.
+* In the riskiest tenth, 11.9% of private nonprofit four-year colleges closed within three years, against 1.3% of the rest (2004 to 2021 scores).
 
 ## Differences from the paper (read before citing numbers)
 
