@@ -6,7 +6,7 @@
   dash.calc('peers_below_median', {
     inputs: ['current_risk', 'benchmarks'],
     title: 'Colleges below the national median',
-    description: 'Count of the 34 colleges whose 3-year closure score is below the median private nonprofit four-year college.',
+    description: 'Count of the comparison colleges (L&C and its peers) whose 3-year closure score is below the median private nonprofit four-year college.',
     fn: (current_risk, benchmarks) => {
       const m = +((benchmarks.find(r => r.key === 'np4_median_3yr') || {}).value);
       return current_risk.filter(r => +r.risk_3yr_pct < m).length;

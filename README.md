@@ -1,6 +1,6 @@
 # Closure and distress risk: Lewis & Clark and peers
 
-This repo replicates the method in **Kelchen, Ritter & Webber (2024), "Predicting College Closures and Financial Distress," Federal Reserve Bank of Philadelphia Working Paper 24-20** ([PDF](https://www.philadelphiafed.org/-/media/FRBP/Assets/working-papers/2024/wp24-20.pdf)). It then applies the method to Lewis & Clark College and the 33 peers used on the [budget analysis site](https://github.com/drasay-lc/budgetanalysis) (`config/peers.csv`, Groups 1 to 3).
+This repo replicates the method in **Kelchen, Ritter & Webber (2024), "Predicting College Closures and Financial Distress," Federal Reserve Bank of Philadelphia Working Paper 24-20** ([PDF](https://www.philadelphiafed.org/-/media/FRBP/Assets/working-papers/2024/wp24-20.pdf)). It then applies the method to Lewis & Clark College and 34 peers (`config/peers.csv`, Groups 1 to 3): the 33 used on the [budget analysis site](https://github.com/drasay-lc/budgetanalysis) plus Hampshire College, added to Group 3 in November 2026.
 
 ## What it does
 
@@ -94,7 +94,7 @@ Wells (567th) and Limestone (795th) were missed.
 
 * **Current closure risk (t = 2025, model F, within 3 years).**
   * Lewis & Clark: 0.06%, the 11th percentile of private nonprofit four-year colleges (89% of them score as riskier). The median college scores 0.7%.
-  * Every peer is below that median. The highest are Saint Mary's CA (0.54%), Drew, Pacific Lutheran, Goucher and Seattle Pacific (0.38% to 0.51%).
+  * Hampshire College, which closes in December 2026, scores 1.19% (59th percentile), the only peer above that median. The next highest are Saint Mary's CA (0.54%), Drew, Pacific Lutheran, Goucher and Seattle Pacific (0.38% to 0.51%).
 * **History.** L&C's cross-fitted percentile:
   * 2005-2008: 33rd to 42nd
   * 2009-2024: 14th to 32nd
@@ -103,7 +103,7 @@ Wells (567th) and Limestone (795th) were missed.
   * Seattle Pacific, Goucher, Capital, Redlands, Hamline and Stetson have high odds on the enrollment flags.
 * **Demographic cliff (2031, model F, within 3 years).**
   * With costs scaling, a 15% gradual decline moves L&C from 0.07% to 0.12%.
-  * If half of expenses are fixed, it moves to 0.27%. That is the 5th-largest value among the 34 colleges, though still below the private nonprofit four-year median (0.91% in that scenario).
+  * If half of expenses are fixed, it moves to 0.27%. That is the 6th-largest value among the 35 colleges (5th before Hampshire was added), though still below the private nonprofit four-year median (0.91% in that scenario).
   * L&C is more exposed to fixed costs than most peers because:
     * its FY2023 margin was already slightly negative (-2.9%)
     * tuition is 68% of revenue, tied for the 3rd-highest share in the set
@@ -112,7 +112,7 @@ Wells (567th) and Limestone (795th) were missed.
 ## Track record
 
 * **Oregon**: 5 of the 6 testable closures were in the riskiest tenth before closing (OCAC, Concordia, Birthingway, OCOM, Multnomah). Marylhurst peaked at the 87th percentile. Cascade College (reported under Oklahoma Christian) and Oregon College of Ministry are not in the panel.
-* **U.S., 2016 to 2027**: 177 private nonprofit four-year closures and absorptions. The model flagged 86 of 131 scored colleges outside the peer screen and 9 of 29 near peers, but none of the 7 peer-sized ones (Wheelock, Mills, Holy Names, Birmingham-Southern, Cabrini, Saint Rose, Hampshire), which peaked between the 19th and 84th percentiles.
+* **U.S., 2016 to 2027**: 177 private nonprofit four-year closures and absorptions. With Hampshire in the comparison set, the size floors are $19.4M of expenses and $16.0M of endowment (half of Hampshire's FY2023 figures, now the smallest in the set). The model flagged 84 of 129 scored colleges outside the peer screen, 8 of 21 near peers and 3 of 17 peer-sized ones. The three were Iowa Wesleyan, Eastern Nazarene and Fontbonne, all spending under $30M a year; every peer-sized closure larger than that was missed (Wheelock, Mills, Holy Names, Birmingham-Southern, Cabrini, Saint Rose, Hampshire, Marymount Manhattan, Siena Heights). Peer-sized closures peaked between the 19th and 97th percentiles. Before Hampshire joined the set, the floors were $32.4M and $29.7M and the model flagged 0 of 7 peer-sized closures.
 * In the riskiest tenth, 11.9% of private nonprofit four-year colleges closed within three years, against 1.3% of the rest (2004 to 2021 scores).
 
 ## Differences from the paper (read before citing numbers)
